@@ -12,9 +12,5 @@ COPY . /home/app
 
 RUN useradd -m -u 1000 user
 USER user
-ENV HOME=/home/app \
-	PATH=/home/app/.local/bin:$PATH
 
-COPY --chown=user . $HOME
-
-CMD streamlit run --server.port $PORT app.pya
+CMD streamlit run --server.port $PORT app.py
