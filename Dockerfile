@@ -1,8 +1,7 @@
 FROM continuumio/miniconda3
 
 RUN apt-get update
-RUN apt-get install nano unzip
-RUN apt install curl -y 
+RUN apt-get install nano unzip curl -y
 
 RUN useradd -m -u 1000 user
 USER user
