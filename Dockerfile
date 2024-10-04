@@ -14,4 +14,6 @@ RUN pip install boto3 pandas gunicorn streamlit scikit-learn matplotlib seaborn 
 
 COPY --chown=user . $HOME/app
 
-CMD streamlit run --server.port $PORT app.py
+EXPOSE 8080
+
+CMD streamlit run --server.port 8080 app.py
