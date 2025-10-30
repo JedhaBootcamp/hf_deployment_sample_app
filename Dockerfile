@@ -1,5 +1,5 @@
 # Start with a lightweight Linux Anaconda image
-FROM continuumio/miniconda3
+FROM continuumio/miniconda3:25.3.1-1
 
 # Update all packages and install nano unzip and curl
 RUN apt-get update
@@ -21,8 +21,9 @@ ENV HOME=/home/user \
 # We set working directory to $HOME/app (<=> /home/user/app)
 WORKDIR $HOME/app
 
-# Install basic dependencies
-RUN pip install boto3 pandas gunicorn streamlit scikit-learn matplotlib seaborn plotly
+# Leverage layer caching: copy only reqs first
+COPY --chown=user requirements.txt $HOME/app/requirements.txt
+RUN pip install -r $HOME/app/requirements.txt
 
 # Copy all local files to /home/user/app with "user" as owner of these files
 # Always use --chown=user when using HUGGINGFACE to avoid permission errors
@@ -33,4 +34,4 @@ COPY --chown=user . $HOME/app
 EXPOSE 7860
 
 # Run streamlit server
-CMD streamlit run --server.port 7860 app.py
+CMD ["streamlit run", "--server.port", "7860", "app.py"]
