@@ -1,11 +1,12 @@
 ---
-title: My First Application On Hf
-emoji: 📈
-colorFrom: indigo
-colorTo: blue
+title: My First Streamlit App In Production
+emoji: 🔥
+colorFrom: yellow
+colorTo: green
 sdk: docker
 pinned: false
-short_description: DEMO USED FOR OFFICIAL PROGRAMS - DO NOT REMOVE
+license: apache-2.0
+short_description: This is my first streamlit app staged on Hugging Spaces / DEMO USED FOR OFFICIAL PROGRAMS - DO NOT REMOVE
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
